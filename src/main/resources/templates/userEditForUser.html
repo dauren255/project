@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <span th:insert="blocks/bootstrap"></span>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<div>
+    <script th:if="${message}">
+        alert( "Пароли не соответствуют друг другу" );
+    </script>
+</div>
+<div class="container mt-5 mb-5">
+    <form  th:action="'/userEdit'" method="post">
+        <h1 class="h3 mb-3 font-weight-normal">Пожалуйста заполните поля</h1>
+        <input name="lastname" type="text" th:value="${user.lastname}" placeholder="Фамилия" class="form-control"><br>
+        <input name="firstname" type="text" th:value="${user.firstname}" placeholder="Имя" class="form-control"><br>
+        <input name="username" type="text" th:value="${user.username}" placeholder="Логин" class="form-control"><br>
+        <input name="password" type="password" th:value="${user.password}" placeholder="Пароль" class="form-control"><br>
+        <input name="confirmPassword" type="password" th:value="${user.password}" placeholder="Подтвердите пароль" class="form-control"><br>
+        <button class="btn btn-lg btn-success btn-block" type="submit">Сохранить</button>
+        <input type="hidden" th:value="${user.id}" name="userId">
+    </form>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+
+</body>
+</html>

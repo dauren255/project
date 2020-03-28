@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${pageTitle}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <span th:insert="blocks/bootstrap"></span>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+<div th:if="${message}">
+    <script>
+        alert( ${message});
+    </script>
+</div>
+<div class="container mt-5 mb-5">
+    <form th:action="'/user'" method="post">
+        <h1 class="h3 mb-3 font-weight-normal">Пожалуйста заполните поля</h1>
+        <input name="lastname" type="text" th:value="${user.lastname}" placeholder="Фамилия" class="form-control"><br>
+        <input name="firstname" type="text" th:value="${user.firstname}" placeholder="Имя" class="form-control"><br>
+        <input name="username" type="text" th:value="${user.username}" placeholder="Логин" class="form-control"><br>
+        <input name="password" type="password" th:value="${user.password}" placeholder="Пароль"
+               class="form-control"><br>
+        <div th:each="role : ${roles}">
+            <label th:if="${uroles.contains(role)}">
+                <h6 th:text="${role}"/>
+                <input type="checkbox" th:name="${role}" checked>
+            </label>
+            <label th:unless="${uroles.contains(role)}">
+                <h6 th:text="${role}"/>
+                <input type="checkbox" th:name="${role}">
+            </label>
+
+        </div>
+        <input type="text" th:value="${user.id}" name="userId" class="form-control"><br>
+        <button class="btn btn-lg btn-success btn-block" type="submit">Сохранить</button>
+    </form>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+
+</body>
+</html>

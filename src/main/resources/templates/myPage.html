@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <span th:insert="blocks/bootstrap"></span>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5 mb-5">
+    <div class="row mb-5">
+        <div class="col-sm-6">
+            <img class="float-right"
+                 src="https://static4.depositphotos.com/1000605/297/i/450/depositphotos_2975699-stock-photo-style-beauty-guy.jpg"
+                 th:width="300"
+                 th:height="auto"
+                 alt="">
+        </div>
+        <div class="col-sm-6">
+            <h1 th:text="'ID: ' + ${user.id}" class="h3 mb-3 font-weight-normal"></h1>
+            <h1 th:text="'Логин: ' + ${user.username}" class="h3 mb-3 font-weight-normal"></h1>
+            <h1 th:text="'Фамилия: ' + ${user.getLastname()}" class="h3 mb-3 font-weight-normal"></h1>
+            <h1 th:text="'Имя: ' + ${user.getFirstname()}" class="h3 mb-3 font-weight-normal"></h1>
+        </div>
+    </div>
+    <div class="row mt -5">
+        <div class="col-sm-12">
+            <form class="form-class ml-5 mr-5" th:action="@{/logout}" method="post">
+                <a class="btn btn-block btn-outline-primary" th:href="'/userEdit/' + ${user.id}">Изменить данные</a>
+                <input class="btn btn-block btn-outline-danger" type="submit" value="Выйти"/>
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

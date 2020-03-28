@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <span th:insert="blocks/bootstrap"></span>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+<div class="container mt-5 mb-5">
+    <form th:action="@{'/video/' + ${video.id}}" method="post">
+        <input th:value="${video.name}" type="text" name="name" placeholder="Название" class="form-control"><br>
+        <input th:value="${video.link}" type="text" name="link" placeholder="Ссылка" class="form-control"><br>
+        <button class="btn btn-lg btn-outline-success btn-block" type="submit">Изменить Видео</button>
+    </form>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+
+</body>
+</html>

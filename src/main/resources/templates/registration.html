@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+>
+<head>
+    <title>Добавление клиента</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<!--    <meta charset="utf-8">-->
+    <span th:insert="blocks/bootstrap"></span>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<span th:if="${message}">
+    <script th:inline="javascript">
+        alert("Уже существует");
+    </script>
+</span>
+<main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header" align="center">Добавление клиента</div>
+                    <div class="card-body">
+                        <form th:action="@{/user/registration}" method="post">
+                            <div class="form-group row">
+                                <label for="lastname" class="col-md-4 col-form-label text-md-right">Фамилия</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="lastname" name="lastname" class="form-control"
+                                           required autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="firstname" class="col-md-4 col-form-label text-md-right">Имя</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="firstname" name="firstname" class="form-control">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label for="username" class="col-md-4 col-form-label text-md-right">Логин</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="username" name="username" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">Пароль</label>
+                                <div class="col-md-6">
+                                    <input type="password" id="password" name="password" class="form-control" required>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Добавить
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<div class="container">
+
+    <table class="table mt-5 mb-5">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Логин</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Роли</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <div th:each="user : ${users}">
+            <tr>
+                <td scope="row"><h6 th:text="${user.id}"/></td>
+                <td><h6 th:text="${user.username}"/></td>
+                <td><h6 th:text="${user.lastname}"/></td>
+                <td><h6 th:text="${user.firstname}"/></td>
+                <td>
+                    <div th:each="role : ${user.roles}"><h6 th:text="${role}"/></div>
+                </td>
+                <td><a th:href="'/user/' + ${user.id}">Edit</a></td>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+</div>
+
+<footer th:insert="blocks/footer :: footer"></footer>
+
+</body>
+</html>
