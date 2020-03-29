@@ -19,6 +19,7 @@
             <h1></h1>
         </div>
         <div class="col-md-8">
+            <a class="btn btn-primary float-right" th:href="'/blog/' + ${post.id} + '/addStudent'">Добавить студента</a>
             <a class="btn btn-primary float-right" th:href="'/blog/' + ${post.id} + '/addVideo'">Добавить урок</a>
         </div>
     </div>
@@ -33,7 +34,7 @@
     <div class="container mt-1 mb-1">
         <div class="row">
             <div class="col-md-4" th:each="video : ${videos}">
-                <div class="card mb-4 shadow-sm">
+                <div class="card shadow-sm">
                     <iframe th:src="${video.link}" allowfullscreen=”allowfullscreen” frameborder=”0″>
                     </iframe>
                     <div class="card-body">

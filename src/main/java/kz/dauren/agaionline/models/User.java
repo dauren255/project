@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
@@ -23,10 +24,22 @@ public class User implements UserDetails {
     private String password;
     private boolean active;
 
+    @ElementCollection(targetClass = Post.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_posts", joinColumns = @JoinColumn(name = "user_id"))
+    private Set<Post> posts;
+
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
+
+    public ArrayList<Long> getPostIds(){
+        ArrayList<Long> ids = new ArrayList<Long>();
+        for(Post p : posts){
+            ids.add(p.getId());
+        }
+        return ids;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

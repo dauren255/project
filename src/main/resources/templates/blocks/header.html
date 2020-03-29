@@ -14,7 +14,8 @@
         <nav class="my-2 my-md-0 mr-md-3">
 
             <a class="p-2 text-dark" href="/">Главная страница</a>
-            <a class="p-2 text-dark" href="/blog">Курсы</a>
+            <a sec:authorize="isAuthenticated()" class="p-2 text-dark" href="/myBlog">Мои Курсы</a>
+            <a sec:authorize="!isAuthenticated() or hasAuthority('ADMIN')"class="p-2 text-dark" href="/blog">Курсы</a>
             <a class="p-2 text-dark" href="/about">Про нас</a>
             <a sec:authorize="!isAuthenticated()" class="p-2 text-dark" href="/login">Вход</a>
             <a sec:authorize="isAuthenticated()" class="p-2 text-dark" href="/myPage">Моя страница</a>
