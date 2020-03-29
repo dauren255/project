@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <span th:insert="blocks/bootstrap"></span>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+<div class="container mt-5 mb-5">
+    <form th:action="@{'/blog/' + ${id} + '/addStudent'}" method="post">
+        <input type="text" name="username" placeholder="Логин студента" class="form-control"><br>
+        <button class="btn btn-lg btn-outline-success btn-block" type="submit">Добавить студента</button>
+    </form>
+</div>
+
+<div class="container">
+
+    <table class="table mt-5 mb-5">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Логин</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Роли</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <div th:each="user : ${users}">
+            <tr>
+                <td scope="row"><h6 th:text="${user.id}"/></td>
+                <td><h6 th:text="${user.username}"/></td>
+                <td><h6 th:text="${user.lastname}"/></td>
+                <td><h6 th:text="${user.firstname}"/></td>
+                <td>
+                    <div th:each="role : ${user.roles}"><h6 th:text="${role}"/></div>
+                </td>
+                <td><a th:href="'/user/' + ${user.id}">Edit</a></td>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+
+</body>
+</html>
