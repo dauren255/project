@@ -55,14 +55,16 @@ public class UserController {
     @PostMapping
     public String userSave(@RequestParam String username,
                            @RequestParam String password,
-                           @RequestParam String lastname,
-                           @RequestParam String firstname,
+//                           @RequestParam String lastname,
+//                           @RequestParam String firstname,
+                           @RequestParam String photoLink,
                            @RequestParam Map<String, String> form,
                            @RequestParam("userId") User user){
         user.setUsername(username);
         user.setPassword(password);
-        user.setLastname(lastname);
-        user.setFirstname(firstname);
+        user.setPhotoLink(photoLink);
+//        user.setLastname(lastname);
+//        user.setFirstname(firstname);
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)
                 .collect(Collectors.toSet());

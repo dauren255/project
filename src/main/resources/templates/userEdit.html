@@ -19,6 +19,7 @@
         <input name="lastname" type="text" th:value="${user.lastname}" placeholder="Фамилия" class="form-control"><br>
         <input name="firstname" type="text" th:value="${user.firstname}" placeholder="Имя" class="form-control"><br>
         <input name="username" type="text" th:value="${user.username}" placeholder="Логин" class="form-control"><br>
+        <input name="photoLink" type="text" th:value="${user.photoLink}" placeholder="Ссылка для фото" class="form-control"><br>
         <input name="password" type="password" th:value="${user.password}" placeholder="Пароль"
                class="form-control"><br>
         <div th:each="role : ${roles}">

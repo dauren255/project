@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,11 +23,14 @@ public class User implements UserDetails {
     private String lastname;
     private String username;
     private String password;
+    private String photoLink;
     private boolean active;
 
-    @ElementCollection(targetClass = Post.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_posts", joinColumns = @JoinColumn(name = "user_id"))
-    private Set<Post> posts;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "user_posts",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "post_id", referencedColumnName = "id")})
+    private List<Post> posts;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))

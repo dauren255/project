@@ -1,6 +1,7 @@
 package kz.dauren.agaionline.controllers;
 
 import kz.dauren.agaionline.models.Post;
+import kz.dauren.agaionline.models.Role;
 import kz.dauren.agaionline.models.User;
 import kz.dauren.agaionline.repo.PostRepository;
 import kz.dauren.agaionline.repo.UserRepository;
@@ -42,7 +43,7 @@ public class BlogController {
 
     @GetMapping("/myBlog")
     public String myBlogMain(@AuthenticationPrincipal User user, Model model) {
-        Iterable<Post> posts = postRepository.findAllById(user.getPostIds());
+        Iterable<Post> posts = userRepository.findByUsernameIgnoreCase(user.getUsername()).getPosts();
         model.addAttribute("title", "Мои курсы");
         model.addAttribute("posts", posts);
         return "myBlog";
@@ -57,15 +58,18 @@ public class BlogController {
     }
 
     @GetMapping("/blog/{id}")
-    public String blogPage(@PathVariable Long id, Model model) {
+    public String blogPage(@AuthenticationPrincipal User user, @PathVariable Long id, Model model) {
         if (!postRepository.existsById(id)) {
             return "redirect:/blog";
         }
         Post post = postRepository.findById(id).get();
-        model.addAttribute("post", post);
-        model.addAttribute("videos", videoRepository.findAllByPostId(post.getId()));
-        model.addAttribute("title", "Страница ");
-        return "blogPage";
+        if ((user.getPostIds().contains(post.getId())) || (user.getAuthorities().contains(Role.ADMIN)) ){
+            model.addAttribute("post", post);
+            model.addAttribute("videos", videoRepository.findAllByPostId(post.getId()));
+            model.addAttribute("title", "Курс " + post.getTitle());
+            return "blogPage";
+        }
+        return "redirect:/myBlog";
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -114,7 +118,7 @@ public class BlogController {
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @PostMapping("/blog/{id}/deleteBlog")
+    @RequestMapping("/blog/{id}/deleteBlog")
     public String deleteBlog(@PathVariable Long id) {
         Post post = postRepository.findById(id).orElseThrow();
         postRepository.delete(post);
@@ -127,6 +131,10 @@ public class BlogController {
         if (!postRepository.existsById(id)) {
             return "redirect:/blog";
         }
+        if(userRepository.findByUsernameIgnoreCase(username) == null){
+            model.addAttribute("message", "Такого студента не существует");
+            return "redirect:/blog/{id}/addStudent";
+        }
         User user = userRepository.findByUsernameIgnoreCase(username);
         if (user.getPosts().contains(postRepository.findById(id).get())){
             model.addAttribute("message", "Такой студент уже есть");
@@ -134,7 +142,18 @@ public class BlogController {
         }
         user.getPosts().add(postRepository.findById(id).get());
         userRepository.save(user);
-        model.addAttribute("pageTitle", "Добавить студента");
-        return "addStudentToBlog";
+        return "redirect:/blog/{id}/addStudent";
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping("/blog/{id}/deleteStudent/{username}")
+    public String deleteStudentFromBlog(@PathVariable Long id,@PathVariable String username, Model model) {
+        if (!postRepository.existsById(id)) {
+            return "redirect:/blog";
+        }
+        User user = userRepository.findByUsernameIgnoreCase(username);
+        user.getPosts().remove(postRepository.findById(id).get());
+        userRepository.save(user);
+        return "redirect:/blog/{id}/addStudent";
     }
 }

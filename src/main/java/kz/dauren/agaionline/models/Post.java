@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -25,6 +26,8 @@ public class Post {
     @JoinColumn(name = "user_id")
     private User author;
 
+    @ManyToMany(mappedBy = "posts", fetch = FetchType.EAGER)
+    private List<User> users;
     public Post(String title, String anons, String full_text, User author) {
         this.title = title;
         this.anons = anons;

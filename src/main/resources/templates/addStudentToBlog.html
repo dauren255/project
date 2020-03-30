@@ -6,7 +6,11 @@
     <span th:insert="blocks/bootstrap"></span>
 </head>
 <body>
-
+<div th:if="${message}">
+    <script>
+        alert("Такого студента не существует");
+    </script>
+</div>
 <header th:insert="blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
     <form th:action="@{'/blog/' + ${id} + '/addStudent'}" method="post">
@@ -30,6 +34,7 @@
         </thead>
         <tbody>
         <div th:each="user : ${users}">
+
             <tr>
                 <td scope="row"><h6 th:text="${user.id}"/></td>
                 <td><h6 th:text="${user.username}"/></td>
@@ -38,7 +43,11 @@
                 <td>
                     <div th:each="role : ${user.roles}"><h6 th:text="${role}"/></div>
                 </td>
-                <td><a th:href="'/user/' + ${user.id}">Edit</a></td>
+                <td>
+                    <form th:action="@{'/blog/' + ${id} + '/deleteStudent/' + ${user.username}}" method="post">
+                        <button type="submit" class="btn btn-outline-danger">Удалить</button>
+                    </form>
+                </td>
             </tr>
         </div>
         </tbody>

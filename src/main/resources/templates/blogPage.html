@@ -3,7 +3,7 @@
       taglib prefix="sec"
       uri="http://www.springframework.org/security/tags"
 >
-<head >
+<head>
     <title th:text="${title}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <span th:insert="blocks/bootstrap"></span>
@@ -25,7 +25,7 @@
     </div>
 
     <h1><strong>Название курса: </strong> <span th:text="${post.title}"></span></h1>
-<!--    <p th:text="${post.anons}"/>-->
+    <!--    <p th:text="${post.anons}"/>-->
     <p><strong>Тема курса: </strong> <span th:text="${post.full_text}"></span></p>
     <p><strong>Преподаватель курса: </strong> <span th:text="${post.authorName}"></span></p>
 
@@ -41,7 +41,8 @@
                         <p class="card-text" th:text="${video.name}"/>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a sec:authorize="hasAuthority('ADMIN')"  class="btn btn-sm btn-outline-secondary" th:href="'/blog/'+${post.id}+'/editVideo/'+${video.id}">Edit</a>
+                                <a sec:authorize="hasAuthority('ADMIN')" class="btn btn-sm btn-outline-secondary"
+                                   th:href="'/blog/'+${post.id}+'/editVideo/'+${video.id}">Edit</a>
                             </div>
                         </div>
                     </div>
@@ -50,9 +51,11 @@
         </div>
     </div>
 
-    <a sec:authorize="hasAuthority('ADMIN')" class="btn btn-outline-secondary btn-block" th:href="@{'/blog/' + ${post.id} + '/editBlog'}">Редактировать</a>
-    <a sec:authorize="hasAuthority('ADMIN')" class="btn btn-outline-danger btn-block" th:href="@{'/blog/' + ${post.id} + '/deleteBlog'}">Удалить</a>
-
+    <a sec:authorize="hasAuthority('ADMIN')" class="btn btn-outline-secondary btn-block"
+       th:href="@{'/blog/' + ${post.id} + '/editBlog'}">Редактировать</a><br>
+    <form sec:authorize="hasAuthority('ADMIN')" th:action="@{'/blog/' + ${post.id} + '/deleteBlog'}" method="post">
+        <button type="submit" class="btn btn-outline-danger btn-block">Удалить</button>
+    </form>
 </div>
 
 <footer th:insert="blocks/footer :: footer"></footer>
