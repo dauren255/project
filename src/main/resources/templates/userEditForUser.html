@@ -19,13 +19,13 @@
         <!--        <input name="firstname" type="text" th:value="${user.firstname}" placeholder="Имя" class="form-control"><br>-->
         <label for="username">Логин</label>
         <input id="username" name="username" type="text" th:value="${user.username}" placeholder="Логин"
-               class="form-control"><br>
+               class="form-control" required><br>
         <label for="password">Пароль</label>
-        <input id="password" name="password" type="password" th:value="${user.password}" placeholder="Пароль"
-               class="form-control"><br>
+        <input id="password" name="password" type="password" placeholder="Пароль"
+               class="form-control" required><br>
         <label for="confirmPassword">Подтверждение пароля</label>
-        <input id="confirmPassword" name="confirmPassword" type="password" th:value="${user.password}"
-               placeholder="Подтвердите пароль" class="form-control"><br>
+        <input id="confirmPassword" name="confirmPassword" type="password"
+               placeholder="Подтвердите пароль" class="form-control" required><br>
         <button class="btn btn-lg btn-success btn-block" type="submit">Сохранить</button>
         <input type="hidden" th:value="${user.id}" name="userId">
     </form>

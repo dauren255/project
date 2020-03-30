@@ -19,7 +19,7 @@ public class Video {
     private Long id;
     private String name, link;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "post_id")
     private Post post;
 

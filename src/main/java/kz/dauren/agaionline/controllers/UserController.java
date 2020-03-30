@@ -3,6 +3,7 @@ package kz.dauren.agaionline.controllers;
 import kz.dauren.agaionline.models.Role;
 import kz.dauren.agaionline.models.User;
 import kz.dauren.agaionline.repo.UserRepository;
+import kz.dauren.agaionline.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -17,19 +18,19 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/user")
-@PreAuthorize("hasAuthority('ADMIN')")
+//@PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @GetMapping
     public String userList(Model model){
-        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("users", userService.findAll());
         return "registration";
     }
     @GetMapping("{user}")
     public String userEditForm(@PathVariable User user, Model model){
-        if(!userRepository.existsById(user.getId())){
+        if(!userService.existsById(user.getId())){
             return "redirect:/user";
         }
         model.addAttribute("pageTitle", "Редактировать профиль");
@@ -40,31 +41,27 @@ public class UserController {
     }
     @PostMapping("/registration")
     public String addUser(User user, Model model) {
-        User userDb = userRepository.findByUsernameIgnoreCase(user.getUsername());
-        if (userDb != null) {
-            model.addAttribute("users", userRepository.findAll());
+        if (!userService.addUser(user)) {
+            model.addAttribute("users", userService.findAll());
             model.addAttribute("message", "Пользователь уже существует");
             return "registration";
         }
-        user.setActive(true);
-        user.setRoles(Collections.singleton(Role.USER));
-        userRepository.save(user);
         return "redirect:/user";
     }
 
     @PostMapping
     public String userSave(@RequestParam String username,
                            @RequestParam String password,
-//                           @RequestParam String lastname,
-//                           @RequestParam String firstname,
+                           @RequestParam String lastname,
+                           @RequestParam String firstname,
                            @RequestParam String photoLink,
                            @RequestParam Map<String, String> form,
                            @RequestParam("userId") User user){
         user.setUsername(username);
         user.setPassword(password);
         user.setPhotoLink(photoLink);
-//        user.setLastname(lastname);
-//        user.setFirstname(firstname);
+        user.setLastname(lastname);
+        user.setFirstname(firstname);
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)
                 .collect(Collectors.toSet());
@@ -76,7 +73,7 @@ public class UserController {
                 user.getRoles().add(Role.valueOf(key));
             }
         }
-        userRepository.save(user);
+        userService.save(user);
         return "redirect:/user";
     }
 

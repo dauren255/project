@@ -22,12 +22,13 @@ public class Post {
     private String title, anons, full_text, link;
     private int views;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User author;
 
-    @ManyToMany(mappedBy = "posts", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "posts", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<User> users;
+
     public Post(String title, String anons, String full_text, User author) {
         this.title = title;
         this.anons = anons;

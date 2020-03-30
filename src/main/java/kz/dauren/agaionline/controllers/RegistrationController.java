@@ -2,6 +2,7 @@ package kz.dauren.agaionline.controllers;
 
 import kz.dauren.agaionline.models.User;
 import kz.dauren.agaionline.repo.UserRepository;
+import kz.dauren.agaionline.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -14,13 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class RegistrationController {
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
 
 
     @GetMapping("/myPage")
     public String blogPage(@AuthenticationPrincipal User user, Model model) {
-        model.addAttribute("user", userRepository.findById(user.getId()).get());
+        model.addAttribute("user", userService.findById(user.getId()));
         model.addAttribute("title", "Моя страница ");
         return "myPage";
     }
@@ -30,7 +31,7 @@ public class RegistrationController {
         if(id != user.getId()){
             return "home";
         }
-        model.addAttribute("user", userRepository.findById(id).get());
+        model.addAttribute("user", userService.findById(id));
         model.addAttribute("title", "Редактирование страницы");
         return "userEditForUser";
     }
@@ -40,8 +41,8 @@ public class RegistrationController {
                                 @RequestParam String username,
                                 @RequestParam String password,
                                 @RequestParam String confirmPassword,
-                                @RequestParam String lastname,
-                                @RequestParam String firstname,
+//                                @RequestParam String lastname,
+//                                @RequestParam String firstname,
                                 @RequestParam("userId") User user,
                                 Model model) {
         if(!password.equals(confirmPassword)){
@@ -52,9 +53,9 @@ public class RegistrationController {
         }
         user.setUsername(username);
         user.setPassword(password);
-        user.setLastname(lastname);
-        user.setFirstname(firstname);
-        userRepository.save(user);
+//        user.setLastname(lastname);
+//        user.setFirstname(firstname);
+        userService.save(user);
         model.addAttribute("user", user);
         return "myPage";
     }

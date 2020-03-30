@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsernameIgnoreCase(String username);
-//    @Query("SELECT u FROM User u WHERE u.posts = ?1")
     Iterable<User> findAllByPostsContains(Post post);
+
 }
