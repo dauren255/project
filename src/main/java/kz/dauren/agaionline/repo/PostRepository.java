@@ -7,5 +7,5 @@ import java.util.ArrayList;
 
 
 public interface PostRepository extends CrudRepository<Post, Long> {
-    Iterable<Post> findAllByTitleContaining(String Title);
+    Iterable<Post> findAllByTitleContainingIgnoreCase(String Title);
 }

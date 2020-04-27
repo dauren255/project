@@ -21,15 +21,12 @@ public class Post {
 
     private String title, anons, full_text, link;
     private int views;
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User author;
+    private String author;
 
     @ManyToMany(mappedBy = "posts", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<User> users;
 
-    public Post(String title, String anons, String full_text, User author) {
+    public Post(String title, String anons, String full_text, String author) {
         this.title = title;
         this.anons = anons;
         this.full_text = full_text;
@@ -37,7 +34,7 @@ public class Post {
     }
 
     public String getAuthorName(){
-        return author != null ? author.getLastname() + " " + author.getFirstname() : "<NONE>";
+        return author != null ? author : "<NONE>";
     }
     public Post(String title, String anons, String full_text, int views){
          this.title = title;

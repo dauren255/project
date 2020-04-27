@@ -2,16 +2,13 @@ package kz.dauren.agaionline.controllers;
 
 import kz.dauren.agaionline.models.Role;
 import kz.dauren.agaionline.models.User;
-import kz.dauren.agaionline.repo.UserRepository;
-import kz.dauren.agaionline.service.UserService;
+import kz.dauren.agaionline.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -21,16 +18,16 @@ import java.util.stream.Collectors;
 //@PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
 
     @GetMapping
     public String userList(Model model){
-        model.addAttribute("users", userService.findAll());
+        model.addAttribute("users", userServiceImpl.findAll());
         return "registration";
     }
     @GetMapping("{user}")
     public String userEditForm(@PathVariable User user, Model model){
-        if(!userService.existsById(user.getId())){
+        if(!userServiceImpl.existsById(user.getId())){
             return "redirect:/user";
         }
         model.addAttribute("pageTitle", "Редактировать профиль");
@@ -41,8 +38,8 @@ public class UserController {
     }
     @PostMapping("/registration")
     public String addUser(User user, Model model) {
-        if (!userService.addUser(user)) {
-            model.addAttribute("users", userService.findAll());
+        if (!userServiceImpl.addUser(user)) {
+            model.addAttribute("users", userServiceImpl.findAll());
             model.addAttribute("message", "Пользователь уже существует");
             return "registration";
         }
@@ -73,7 +70,7 @@ public class UserController {
                 user.getRoles().add(Role.valueOf(key));
             }
         }
-        userService.save(user);
+        userServiceImpl.save(user);
         return "redirect:/user";
     }
 

@@ -1,8 +1,7 @@
 package kz.dauren.agaionline.controllers;
 
 import kz.dauren.agaionline.models.User;
-import kz.dauren.agaionline.repo.UserRepository;
-import kz.dauren.agaionline.service.UserService;
+import kz.dauren.agaionline.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -15,13 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class RegistrationController {
     @Autowired
-    private UserService userService;
-
-
+    private UserServiceImpl userServiceImpl;
 
     @GetMapping("/myPage")
     public String blogPage(@AuthenticationPrincipal User user, Model model) {
-        model.addAttribute("user", userService.findById(user.getId()));
+        model.addAttribute("user", userServiceImpl.findById(user.getId()));
         model.addAttribute("title", "Моя страница ");
         return "myPage";
     }
@@ -31,7 +28,7 @@ public class RegistrationController {
         if(id != user.getId()){
             return "home";
         }
-        model.addAttribute("user", userService.findById(id));
+        model.addAttribute("user", userServiceImpl.findById(id));
         model.addAttribute("title", "Редактирование страницы");
         return "userEditForUser";
     }
@@ -55,7 +52,7 @@ public class RegistrationController {
         user.setPassword(password);
 //        user.setLastname(lastname);
 //        user.setFirstname(firstname);
-        userService.save(user);
+        userServiceImpl.save(user);
         model.addAttribute("user", user);
         return "myPage";
     }
