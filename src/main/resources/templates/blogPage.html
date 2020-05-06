@@ -24,30 +24,44 @@
         </div>
     </div>
 
+
     <h1><strong>Название курса: </strong> <span th:text="${post.title}"></span></h1>
-    <!--    <p th:text="${post.anons}"/>-->
     <p><strong>Тема курса: </strong> <span th:text="${post.full_text}"></span></p>
     <p><strong>Преподаватель курса: </strong> <span th:text="${post.authorName}"></span></p>
 
     <br>
-
-    <div class="container mt-1 mb-1">
-        <div class="row">
-            <div class="col-md-4" th:each="video : ${videos}">
-                <div class="card shadow-sm">
-                    <iframe src="https://disk.yandex.kz/i/5bzpHFXuGtp6kw" allowfullscreen=”allowfullscreen” frameborder=”0″>
-                    </iframe>
-                    <div class="card-body">
-                        <p class="card-text" th:text="${video.name}"/>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <a sec:authorize="hasAuthority('ADMIN')" class="btn btn-sm btn-outline-secondary"
-                                   th:href="'/blog/'+${post.id}+'/editVideo/'+${video.id}">Edit</a>
+    <div th:if="${posts.contains(post.id)}">
+        <div class="container mt-1 mb-1">
+            <div class="row">
+                <div class="col-md-4" th:each="video : ${videos}">
+                    <div class="card shadow-sm">
+                        <iframe th:src="${video.link}" allowfullscreen=”allowfullscreen” frameborder=”0″>
+                        </iframe>
+                        <div class="card-body">
+                            <p class="card-text" th:text="${video.name}"/>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a sec:authorize="hasAuthority('ADMIN')" class="btn btn-sm btn-outline-secondary"
+                                       th:href="'/blog/'+${post.id}+'/editVideo/'+${video.id}">Edit</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="container mt-5 mb-5" th:align="center" th:unless="${posts.contains(post.id)}">
+        <div th:if="${rePosts.contains(post.id)}">
+            <form th:action="@{'/blog/b/' + ${post.id}}" method="post">
+                <button class="btn btn-lg btn-outline-danger btn-block" type="submit">Отмена на курс</button>
+            </form>
+        </div>
+        <div th:unless="${rePosts.contains(post.id)}">
+            <form th:action="@{'/blog/addToPost/' + ${post.id}}" method="post">
+                <button class="btn btn-lg btn-outline-info btn-block" type="submit">Запрос на курс</button>
+            </form>
         </div>
     </div>
 

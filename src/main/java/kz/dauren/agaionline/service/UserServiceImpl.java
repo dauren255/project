@@ -6,6 +6,8 @@ import kz.dauren.agaionline.models.User;
 import kz.dauren.agaionline.repo.UserRepository;
 import kz.dauren.agaionline.service.Interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.parameters.P;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -55,7 +57,9 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
     @Transactional
     public Iterable<User> findAll() {
-        return userRepository.findAll();
+//        Pageable limit = PageRequest.of(0,3);
+//        return userRepository.findAll(limit);
+        return userRepository.findAllByOrderById();
     }
     @Transactional
     public boolean existsById(Long id) {
@@ -63,11 +67,15 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
     @Transactional
     public void save(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
     @Transactional
-    public Object findById(Long id) {
+    public User findById(Long id) {
         return userRepository.findById(id).get();
+    }
+    @Transactional
+    public void delete(Long id){
+        userRepository.delete(userRepository.findById(id).get());
     }
 }

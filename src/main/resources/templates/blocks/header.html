@@ -20,6 +20,8 @@
             <a sec:authorize="!isAuthenticated()" class="p-2 text-dark" href="/login">Вход</a>
             <a sec:authorize="isAuthenticated()" class="p-2 text-dark" href="/myPage">Моя страница</a>
             <a sec:authorize="isAuthenticated() and hasAuthority('ADMIN')"  class="p-2 text-dark" href="/user">Добавление клиента</a>
+            <a sec:authorize="!isAuthenticated()"  class="p-2 text-dark" href="/user">Регистрация</a>
+
         </nav>
     </div>
 </div>

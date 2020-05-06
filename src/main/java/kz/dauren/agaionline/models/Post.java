@@ -1,9 +1,6 @@
 package kz.dauren.agaionline.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,6 +22,9 @@ public class Post {
 
     @ManyToMany(mappedBy = "posts", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<User> users;
+
+    @ManyToMany(mappedBy = "requestPosts", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<User> requestUsers;
 
     public Post(String title, String anons, String full_text, String author) {
         this.title = title;

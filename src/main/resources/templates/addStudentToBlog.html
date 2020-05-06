@@ -50,6 +50,26 @@
                 </td>
             </tr>
         </div>
+        <div th:each="user : ${reUsers}">
+
+            <tr>
+                <td scope="row"><h6 th:text="${user.id}"/></td>
+                <td><h6 th:text="${user.username}"/></td>
+                <td><h6 th:text="${user.lastname}"/></td>
+                <td><h6 th:text="${user.firstname}"/></td>
+                <td>
+                    <div th:each="role : ${user.roles}"><h6 th:text="${role}"/></div>
+                </td>
+                <td>
+                    <form th:action="@{'/blog/' + ${id} + '/addStudent/' + ${user.id}}" method="post">
+                        <button type="submit" class="btn btn-outline-info">Добавить</button>
+                    </form>
+                    <form th:action="@{'/blog/' + ${id} + '/deleteReStudent/' + ${user.id}}" method="post">
+                        <button type="submit" class="btn btn-outline-danger">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        </div>
         </tbody>
     </table>
 </div>

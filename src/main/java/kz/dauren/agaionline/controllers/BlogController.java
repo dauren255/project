@@ -8,6 +8,7 @@ import kz.dauren.agaionline.service.UserServiceImpl;
 import kz.dauren.agaionline.service.VideoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class BlogController {
@@ -38,6 +41,7 @@ public class BlogController {
         model.addAttribute("title", "Блог сайта");
         model.addAttribute("posts", posts);
         model.addAttribute("filter", filter);
+
         return "blogMain";
     }
 
@@ -62,14 +66,14 @@ public class BlogController {
         if (!postServiceImpl.existsById(id)) {
             return "redirect:/blog";
         }
+        User usr = userServiceImpl.findByUsernameIgnoreCase(user.getUsername());
         Post post = postServiceImpl.findById(id);
-        if ((user.getPostIds().contains(post.getId())) || (user.getAuthorities().contains(Role.ADMIN)) ){
-            model.addAttribute("post", post);
-            model.addAttribute("videos", videoServiceImpl.findAllByPostId(post.getId()));
-            model.addAttribute("title", "Курс " + post.getTitle());
-            return "blogPage";
-        }
-        return "redirect:/myBlog";
+        model.addAttribute("post", post);
+        model.addAttribute("videos", videoServiceImpl.findAllByPostId(post.getId()));
+        model.addAttribute("title", "Курс " + post.getTitle());
+        model.addAttribute("posts", usr.getPostIds());
+        model.addAttribute("rePosts", usr.getRePostIds());
+        return "blogPage";
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -92,6 +96,8 @@ public class BlogController {
         model.addAttribute("id", postServiceImpl.findById(id).getId());
         model.addAttribute("users", userServiceImpl.findAllByPostsContains(postServiceImpl.findById(id)));
         model.addAttribute("pageTitle", "Добавить студента");
+        model.addAttribute("reUsers", postServiceImpl.findById(id).getRequestUsers());
+
         return "addStudentToBlog";
     }
 
@@ -124,18 +130,45 @@ public class BlogController {
         return "redirect:/blog";
     }
 
+    @PreAuthorize("hasAuthority('USER')")
+    @PostMapping("/blog/addToPost/{id}")
+    public String addToPost(@AuthenticationPrincipal User user, @PathVariable Long id) {
+        if (!postServiceImpl.existsById(id)) {
+            return "redirect:/blog";
+        }
+        User usr = userServiceImpl.findByUsernameIgnoreCase(user.getUsername());
+        usr.getRequestPosts().add(postServiceImpl.findById(id));
+        userServiceImpl.save(usr);
+
+        return "redirect:/blog/{id}";
+    }
+
+    @PreAuthorize("hasAuthority('USER')")
+    @PostMapping("/blog/b/{id}")
+    public String backToPost(@AuthenticationPrincipal User user, @PathVariable Long id) {
+        if (!postServiceImpl.existsById(id)) {
+            return "redirect:/blog";
+        }
+        User usr = userServiceImpl.findByUsernameIgnoreCase(user.getUsername());
+        usr.getRequestPosts().remove(postServiceImpl.findById(id));
+        userServiceImpl.save(usr);
+
+        return "redirect:/blog/{id}";
+    }
+
+
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/blog/{id}/addStudent")
     public String addStudentToBlog(@PathVariable Long id, @RequestParam String username, Model model) {
         if (!postServiceImpl.existsById(id)) {
             return "redirect:/blog";
         }
-        if(userServiceImpl.findByUsernameIgnoreCase(username) == null){
+        if (userServiceImpl.findByUsernameIgnoreCase(username) == null) {
             model.addAttribute("message", "Такого студента не существует");
             return "redirect:/blog/{id}/addStudent";
         }
         User user = userServiceImpl.findByUsernameIgnoreCase(username);
-        if (user.getPosts().contains(postServiceImpl.findById(id))){
+        if (user.getPosts().contains(postServiceImpl.findById(id))) {
             model.addAttribute("message", "Такой студент уже есть");
             return "redirect:/blog/{id}/addStudent";
         }
@@ -145,14 +178,49 @@ public class BlogController {
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping("/blog/{id}/addStudent/{userid}")
+    public String addStudentToBlog(@PathVariable Long id, @PathVariable Long userid, Model model) {
+        if (!postServiceImpl.existsById(id)) {
+            return "redirect:/blog";
+        }
+        if (userServiceImpl.findById(userid) == null) {
+            model.addAttribute("message", "Такого студента не существует");
+            return "redirect:/blog/{id}/addStudent";
+        }
+        User user = userServiceImpl.findById(userid);
+        if (user.getPosts().contains(postServiceImpl.findById(id))) {
+            model.addAttribute("message", "Такой студент уже есть");
+            return "redirect:/blog/{id}/addStudent";
+        }
+        user.getPosts().add(postServiceImpl.findById(id));
+        user.getRequestPosts().remove(postServiceImpl.findById(id));
+        userServiceImpl.save(user);
+        return "redirect:/blog/{id}/addStudent";
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/blog/{id}/deleteStudent/{username}")
-    public String deleteStudentFromBlog(@PathVariable Long id,@PathVariable String username, Model model) {
+    public String deleteStudentFromBlog(@PathVariable Long id, @PathVariable String username) {
         if (!postServiceImpl.existsById(id)) {
             return "redirect:/blog";
         }
         User user = userServiceImpl.findByUsernameIgnoreCase(username);
         user.getPosts().remove(postServiceImpl.findById(id));
         userServiceImpl.save(user);
+
+        return "redirect:/blog/{id}/addStudent";
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping("/blog/{id}/deleteReStudent/{userid}")
+    public String deleteStudetFromRequest(@PathVariable Long id, @PathVariable Long userid) {
+        if (!postServiceImpl.existsById(id)) {
+            return "redirect:/blog";
+        }
+        User user = userServiceImpl.findById(userid);
+        user.getRequestPosts().remove(postServiceImpl.findById(id));
+        userServiceImpl.save(user);
+
         return "redirect:/blog/{id}/addStudent";
     }
 }

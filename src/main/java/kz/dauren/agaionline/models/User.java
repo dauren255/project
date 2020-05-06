@@ -1,7 +1,9 @@
 package kz.dauren.agaionline.models;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -18,6 +20,7 @@ import java.util.Set;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ApiModelProperty(notes = "This user id")
     private Long id;
     private String firstname;
     private String lastname;
@@ -32,6 +35,12 @@ public class User implements UserDetails {
             inverseJoinColumns = {@JoinColumn(name = "post_id", referencedColumnName = "id")})
     private List<Post> posts;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "user_repuest_posts",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "post_id", referencedColumnName = "id")})
+    private List<Post> requestPosts;
+
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
@@ -40,6 +49,14 @@ public class User implements UserDetails {
     public ArrayList<Long> getPostIds(){
         ArrayList<Long> ids = new ArrayList<Long>();
         for(Post p : posts){
+            ids.add(p.getId());
+        }
+        return ids;
+    }
+
+    public ArrayList<Long> getRePostIds(){
+        ArrayList<Long> ids = new ArrayList<Long>();
+        for(Post p : requestPosts){
             ids.add(p.getId());
         }
         return ids;
