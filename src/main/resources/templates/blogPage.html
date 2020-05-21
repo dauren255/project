@@ -27,7 +27,7 @@
 
     <h1><strong>Название курса: </strong> <span th:text="${post.title}"></span></h1>
     <p><strong>Тема курса: </strong> <span th:text="${post.full_text}"></span></p>
-    <p><strong>Преподаватель курса: </strong> <span th:text="${post.authorName}"></span></p>
+    <p><strong>Преподаватель курса: </strong> <span th:text="${post.getAuthor().getLastname() + ' ' + post.getAuthor().getFirstname()}"></span></p>
 
     <br>
     <div th:if="${posts.contains(post.id)}">

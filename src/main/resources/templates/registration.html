@@ -10,9 +10,14 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
-<span th:if="${message}">
+<span th:if="${message} == 'password' ">
     <script th:inline="javascript">
-        alert("Уже существует");
+        alert("Пароль не соответствует требованиям");
+    </script>
+</span>
+<span th:if="${message} == 'account' ">
+    <script th:inline="javascript">
+        alert("Пользователь уже существует");
     </script>
 </span>
 <main class="login-form">

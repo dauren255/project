@@ -43,7 +43,7 @@
 
                     <div class="card-body">
                         <p class="card-text" th:text="${el.title}"></p>
-                        <p class="card-text" th:text="${el.getAuthorName()}"></p>
+                        <p class="card-text" th:text="${el.getAuthor().getLastname() +' '+ el.getAuthor().getFirstname()}"></p>
 <!--                        <p><b>Просмотры: </b> <span th:text="${el.views}"></span></p>-->
 
                         <div class="d-flex justify-content-between align-items-center">

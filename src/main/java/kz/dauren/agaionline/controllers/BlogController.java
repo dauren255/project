@@ -104,7 +104,7 @@ public class BlogController {
     //POSTMAPPINGS
     @PostMapping("/blog/addBlog")
     public String addBlog(@AuthenticationPrincipal User user, @Valid Post post, Model model) {
-        post.setAuthor(user.getFirstname() + " " + user.getLastname());
+        post.setAuthor(userServiceImpl.findByUsernameIgnoreCase(user.getUsername()));
         postServiceImpl.save(post);
         model.addAttribute("posts", postServiceImpl.findAll());
         return "redirect:/blog";
@@ -117,7 +117,7 @@ public class BlogController {
         if (result.hasErrors()) {
             return "editBlog";
         }
-        post.setAuthor(user.getFirstname() + " " + user.getLastname());
+//        post.setAuthor();
         postServiceImpl.save(post);
         model.addAttribute("posts", postServiceImpl.findAll());
         return "redirect:/blog";

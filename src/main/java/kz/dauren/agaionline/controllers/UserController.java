@@ -45,11 +45,18 @@ public class UserController {
     }
     @PostMapping("/registration")
     public String addUser(@AuthenticationPrincipal User currentUser, User user, Model model) {
+        if(user.getPassword().length()<8){
+            model.addAttribute("users", userServiceImpl.findAll());
+            model.addAttribute("message", "password");
+            return "registration";
+
+        }
         if (!userServiceImpl.addUser(user)) {
             model.addAttribute("users", userServiceImpl.findAll());
-            model.addAttribute("message", "Пользователь уже существует");
+            model.addAttribute("message", "account");
             return "registration";
         }
+
         if(currentUser == null){
             return "login";
         }
