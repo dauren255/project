@@ -114,7 +114,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -200,7 +200,7 @@
       <workItem from="1592288500921" duration="2014000" />
       <workItem from="1594836185596" duration="171000" />
       <workItem from="1594836883054" duration="2135000" />
-      <workItem from="1595709460360" duration="256000" />
+      <workItem from="1595709460360" duration="471000" />
     </task>
     <task id="LOCAL-00001">
       <created>1585379807394</created>
@@ -342,6 +342,10 @@
     </state>
     <state width="1398" height="13" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1590034770341" />
     <state width="1398" height="11" key="GridCell.Tab.1.right/0.23.1440.808@0.23.1440.808" timestamp="1589641321192" />
+    <state x="221" y="89" key="SettingsEditor" timestamp="1595710097991">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1595710097991" />
     <state x="320" y="191" key="Vcs.Push.Dialog.v2" timestamp="1590033660068">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -356,6 +360,10 @@
       <screen x="0" y="23" width="1440" height="808" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="dock-window-1/0.23.1440.808@0.23.1440.808" timestamp="1589967027238" />
+    <state x="505" y="323" key="git4idea.rebase.GitRebaseDialog" timestamp="1595710067268">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="505" y="323" key="git4idea.rebase.GitRebaseDialog/0.0.1440.900@0.0.1440.900" timestamp="1595710067268" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
