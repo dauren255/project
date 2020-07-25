@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7e4042a2-2612-4e91-8c87-9dc1b7b5bd2f" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="postgres: database" type="162271b6:PgImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="postgres: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="postgres: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="postgres: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Dauren" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="git@github.com:/daurenburibekov/newproject.git" />
+      </set>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1ZkL3BCRd1QTrOfzpzrUuv526Qn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/MainPages" />
+      <recent name="$PROJECT_DIR$/src/main/resources/db/migration" />
+      <recent name="$PROJECT_DIR$/src/main/java/kz/dauren/agaionline" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/kz/dauren/agaionline/config" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/main/java/kz/dauren/agaionline" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="AgaionlineApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="newproject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kz.dauren.agaionline.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="kz.dauren.agaionline.AgaionlineApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.AgaionlineApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7e4042a2-2612-4e91-8c87-9dc1b7b5bd2f" name="Default Changelist" comment="" />
+      <created>1585377943042</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585377943042</updated>
+      <workItem from="1585377949471" duration="2665000" />
+      <workItem from="1585396868801" duration="264000" />
+      <workItem from="1585466514740" duration="6703000" />
+      <workItem from="1585476448120" duration="389000" />
+      <workItem from="1585541477628" duration="10016000" />
+      <workItem from="1585562550522" duration="223000" />
+      <workItem from="1585571491095" duration="2332000" />
+      <workItem from="1585632221077" duration="477000" />
+      <workItem from="1585652519373" duration="1409000" />
+      <workItem from="1585655116510" duration="173000" />
+      <workItem from="1585656661764" duration="478000" />
+      <workItem from="1585658158830" duration="6000" />
+      <workItem from="1585658875077" duration="689000" />
+      <workItem from="1585748318229" duration="456000" />
+      <workItem from="1585749976930" duration="137000" />
+      <workItem from="1585803829849" duration="25000" />
+      <workItem from="1586798293323" duration="902000" />
+      <workItem from="1587473952338" duration="114000" />
+      <workItem from="1588006411720" duration="8551000" />
+      <workItem from="1588153245314" duration="286000" />
+      <workItem from="1588185219498" duration="688000" />
+      <workItem from="1588218886275" duration="198000" />
+      <workItem from="1588265462306" duration="3037000" />
+      <workItem from="1588494960595" duration="147000" />
+      <workItem from="1588501864407" duration="9515000" />
+      <workItem from="1588675427416" duration="1086000" />
+      <workItem from="1588683767149" duration="503000" />
+      <workItem from="1588763850945" duration="575000" />
+      <workItem from="1588764949148" duration="158000" />
+      <workItem from="1588782479837" duration="778000" />
+      <workItem from="1589184272911" duration="258000" />
+      <workItem from="1589530776867" duration="810000" />
+      <workItem from="1589640841857" duration="396000" />
+      <workItem from="1589727123424" duration="351000" />
+      <workItem from="1589966993116" duration="119000" />
+      <workItem from="1590009314225" duration="240000" />
+      <workItem from="1590010027087" duration="11000" />
+      <workItem from="1590033594566" duration="580000" />
+      <workItem from="1592288500921" duration="2014000" />
+      <workItem from="1594836185596" duration="171000" />
+      <workItem from="1594836883054" duration="2135000" />
+      <workItem from="1595709460360" duration="256000" />
+    </task>
+    <task id="LOCAL-00001">
+      <created>1585379807394</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1585379807395</updated>
+    </task>
+    <task id="LOCAL-00002" summary="zcfvg">
+      <created>1585379918593</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1585379918593</updated>
+    </task>
+    <task id="LOCAL-00003" summary="new">
+      <created>1585476471772</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1585476471772</updated>
+    </task>
+    <task id="LOCAL-00004" summary="new">
+      <created>1585476626871</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1585476626871</updated>
+    </task>
+    <task id="LOCAL-00005" summary="new">
+      <created>1585550162090</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1585550162090</updated>
+    </task>
+    <task id="LOCAL-00006" summary="new">
+      <created>1585571720425</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1585571720425</updated>
+    </task>
+    <task id="LOCAL-00007" summary="new">
+      <created>1588010514783</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1588010514783</updated>
+    </task>
+    <task id="LOCAL-00008" summary="new">
+      <created>1588764488716</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1588764488716</updated>
+    </task>
+    <task id="LOCAL-00009" summary="new">
+      <created>1590033645023</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1590033645023</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="zcfvg" />
+    <MESSAGE value="new" />
+    <option name="LAST_COMMIT_MESSAGE" value="new" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="276" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588008131597">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="276" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.900@0.0.1440.900" timestamp="1588008131597" />
+    <state x="312" y="55" key="CommitChangelistDialog2" timestamp="1590033644679">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="312" y="55" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1590033644679" />
+    <state x="312" y="41" key="CommitChangelistDialog2/0.23.1440.808@0.23.1440.808" timestamp="1588764488438" />
+    <state width="1398" height="13" key="GridCell.Tab.0.bottom" timestamp="1590034770340">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="13" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1590034770340" />
+    <state width="1398" height="11" key="GridCell.Tab.0.bottom/0.23.1440.808@0.23.1440.808" timestamp="1589641321191" />
+    <state width="1398" height="13" key="GridCell.Tab.0.center" timestamp="1590034770339">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="13" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1590034770339" />
+    <state width="1398" height="11" key="GridCell.Tab.0.center/0.23.1440.808@0.23.1440.808" timestamp="1589641321190" />
+    <state width="1398" height="13" key="GridCell.Tab.0.left" timestamp="1590034770338">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="13" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1590034770338" />
+    <state width="1398" height="11" key="GridCell.Tab.0.left/0.23.1440.808@0.23.1440.808" timestamp="1589641321189" />
+    <state width="1398" height="13" key="GridCell.Tab.0.right" timestamp="1590034770339">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="13" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1590034770339" />
+    <state width="1398" height="11" key="GridCell.Tab.0.right/0.23.1440.808@0.23.1440.808" timestamp="1589641321190" />
+    <state width="1398" height="13" key="GridCell.Tab.1.bottom" timestamp="1590034770341">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="13" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1590034770341" />
+    <state width="1398" height="11" key="GridCell.Tab.1.bottom/0.23.1440.808@0.23.1440.808" timestamp="1589641321192" />
+    <state width="1398" height="13" key="GridCell.Tab.1.center" timestamp="1590034770341">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="13" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1590034770341" />
+    <state width="1398" height="11" key="GridCell.Tab.1.center/0.23.1440.808@0.23.1440.808" timestamp="1589641321192" />
+    <state width="1398" height="13" key="GridCell.Tab.1.left" timestamp="1590034770340">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="13" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1590034770340" />
+    <state width="1398" height="11" key="GridCell.Tab.1.left/0.23.1440.808@0.23.1440.808" timestamp="1589641321191" />
+    <state width="1398" height="13" key="GridCell.Tab.1.right" timestamp="1590034770341">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="13" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1590034770341" />
+    <state width="1398" height="11" key="GridCell.Tab.1.right/0.23.1440.808@0.23.1440.808" timestamp="1589641321192" />
+    <state x="320" y="191" key="Vcs.Push.Dialog.v2" timestamp="1590033660068">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="191" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1590033660068" />
+    <state x="320" y="194" key="Vcs.Push.Dialog.v2/0.23.1440.808@0.23.1440.808" timestamp="1588764491055" />
+    <state x="376" y="278" key="com.intellij.ide.util.TipDialog" timestamp="1595709486223">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="376" y="278" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1595709486223" />
+    <state x="376" y="278" key="com.intellij.ide.util.TipDialog/0.23.1440.808@0.23.1440.808" timestamp="1590010048602" />
+    <state x="100" y="100" width="1240" height="700" key="dock-window-1" timestamp="1589967027238">
+      <screen x="0" y="23" width="1440" height="808" />
+    </state>
+    <state x="100" y="100" width="1240" height="700" key="dock-window-1/0.23.1440.808@0.23.1440.808" timestamp="1589967027238" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

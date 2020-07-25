@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <span th:insert="blocks/bootstrap"></span>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+<div class="container mt-5 mb-5">
+    <form th:action="@{/blog/addBlog}" method="post">
+        <input type="text" name="title" placeholder="Название" class="form-control"><br>
+        <input type="text" name="anons" placeholder="Анонс" class="form-control"><br>
+        <input type="text" name="link" placeholder="Ссылка на картинку" class="form-control"><br>
+        <textarea name="full_text" placeholder="Весь текст" class="form-control"></textarea><br>
+        <button class="btn btn-lg btn-outline-success btn-block" type="submit">Добавить блог</button>
+    </form>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+
+</body>
+</html>

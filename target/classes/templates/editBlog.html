@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${pageTitle}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <span th:insert="blocks/bootstrap"></span>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+<div class="container mt-5 mb-5">
+
+    <form action="#" th:action="@{'/blog/' + ${oldPost.id} + '/editBlog'}" method="post">
+        <h1 class="h3 mb-3 font-weight-normal">Пожалуйста заполните поля</h1>
+        <input name="title" type="text" th:value="${oldPost.title}" placeholder="Название" class="form-control" required autofocus><br>
+        <input name="anons" type="text" th:value="${oldPost.anons}" placeholder="Анонс" class="form-control"><br>
+        <textarea name="full_text"  th:text="${oldPost.full_text}" placeholder="Весь текст" class="form-control"></textarea><br>
+        <input name="link"  th:value="${oldPost.link}" placeholder="Ссылка для картинки" class="form-control"/><br>
+
+        <button class="btn btn-lg btn-success btn-block" type="submit">Редактировать блог</button>
+    </form>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+
+</body>
+</html>

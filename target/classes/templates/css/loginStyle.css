@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+}
+.panel {
+    width: 850px;
+    height: 40px;
+    background: grey;
+    margin-top: -5px;
+    border: 1px solid #aaa;
+}
+#play, #back, #next, #pause{
+    float: left;
+    width: 50px;
+    height: 40px;
+}
+#time{
+    float: left;
+    width: 50px;
+    height: 40px;
+    color: #fff;
+    padding-top: 10px;
+    margin-left: 10px;
+}
+#line{
+    margin-top: 15px;
+    height: 4px;
+    width: 350px;
+    background: #fff;
+    float: left;
+    margin-right: 15px;
+}
+#volume {
+    float: left;
+    width: 80px;
+    height: 40px;
+}
+#quality{
+    float: left;
+    width: 50px;
+    height: 40px;
+    color: #fff;
+    padding-top: 10px;
+    margin-left: 10px;
+}
+#full {
+    float: left;
+    width: 75px;
+    height: 40px;
+}
+#fader {
+    background: black;
+    border-radius: 5px;
+    width: 10px;
+    height: 10px;
+    position: relative;
+    z-index: 4;
+    bottom: 3px;
+}
+#playlist {
+    margin-top: 20px;
+}
+.viewed {
+    position: absolute;
+    background: red;
+    height: 4px;
+}

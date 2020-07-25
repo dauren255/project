@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      taglib prefix="sec"
+      uri="http://www.springframework.org/security/tags"
+>
+<head>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <span th:insert="blocks/bootstrap"></span>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5 mb-5">
+
+    <div class="row" sec:authorize="hasAuthority('ADMIN')">
+        <div class="col-md-3">
+            <h1></h1>
+        </div>
+        <div class="col-md-8">
+            <a class="btn btn-primary float-right" th:href="'/blog/' + ${post.id} + '/addStudent'">Добавить студента</a>
+            <a class="btn btn-primary float-right" th:href="'/blog/' + ${post.id} + '/addVideo'">Добавить урок</a>
+        </div>
+    </div>
+
+
+    <h1><strong>Название курса: </strong> <span th:text="${post.title}"></span></h1>
+    <p><strong>Тема курса: </strong> <span th:text="${post.full_text}"></span></p>
+    <p><strong>Преподаватель курса: </strong> <span th:text="${post.getAuthor().getLastname() + ' ' + post.getAuthor().getFirstname()}"></span></p>
+
+    <br>
+    <div th:if="${posts.contains(post.id)}">
+        <div class="container mt-1 mb-1">
+            <div class="row">
+                <div class="col-md-4" th:each="video : ${videos}">
+                    <div class="card shadow-sm">
+                        <iframe th:src="${video.link}" allowfullscreen=”allowfullscreen” frameborder=”0″>
+                        </iframe>
+                        <div class="card-body">
+                            <p class="card-text" th:text="${video.name}"/>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a sec:authorize="hasAuthority('ADMIN')" class="btn btn-sm btn-outline-secondary"
+                                       th:href="'/blog/'+${post.id}+'/editVideo/'+${video.id}">Edit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5 mb-5" th:align="center" th:unless="${posts.contains(post.id)}">
+        <div th:if="${rePosts.contains(post.id)}">
+            <form th:action="@{'/blog/b/' + ${post.id}}" method="post">
+                <button class="btn btn-lg btn-outline-danger btn-block" type="submit">Отмена на курс</button>
+            </form>
+        </div>
+        <div th:unless="${rePosts.contains(post.id)}">
+            <form th:action="@{'/blog/addToPost/' + ${post.id}}" method="post">
+                <button class="btn btn-lg btn-outline-info btn-block" type="submit">Запрос на курс</button>
+            </form>
+        </div>
+    </div>
+
+    <a sec:authorize="hasAuthority('ADMIN')" class="btn btn-outline-secondary btn-block"
+       th:href="@{'/blog/' + ${post.id} + '/editBlog'}">Редактировать</a><br>
+    <form sec:authorize="hasAuthority('ADMIN')" th:action="@{'/blog/' + ${post.id} + '/deleteBlog'}" method="post">
+        <button type="submit" class="btn btn-outline-danger btn-block">Удалить</button>
+    </form>
+</div>
+
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

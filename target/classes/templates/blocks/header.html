@@ -1,0 +1,27 @@
+
+<div th:fragment="header"
+     taglib prefix="sec"
+     uri="http://www.springframework.org/security/tags"
+    >
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
+         xmlns:th="http://www.thymeleaf.org"
+         xmlns="http://www.w3.org/1999/xhtml"
+         xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+         taglib prefix="security"
+         uri="http://www.springframework.org/security/tags"
+    >
+        <h5 class="my-0 mr-md-auto font-weight-normal"><a href="/">AgaiOnline</a></h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+
+            <a class="p-2 text-dark" href="/">Главная страница</a>
+            <a sec:authorize="isAuthenticated()" class="p-2 text-dark" href="/myBlog">Мои Курсы</a>
+            <a sec:authorize="!isAuthenticated() or hasAuthority('ADMIN')"class="p-2 text-dark" href="/blog">Курсы</a>
+            <a class="p-2 text-dark" href="/about">Про нас</a>
+            <a sec:authorize="!isAuthenticated()" class="p-2 text-dark" href="/login">Вход</a>
+            <a sec:authorize="isAuthenticated()" class="p-2 text-dark" href="/myPage">Моя страница</a>
+            <a sec:authorize="isAuthenticated() and hasAuthority('ADMIN')"  class="p-2 text-dark" href="/user">Добавление клиента</a>
+            <a sec:authorize="!isAuthenticated()"  class="p-2 text-dark" href="/user">Регистрация</a>
+
+        </nav>
+    </div>
+</div>

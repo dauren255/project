@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      taglib prefix="sec"
+      uri="http://www.springframework.org/security/tags"
+>
+<head>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <span th:insert="blocks/bootstrap"></span>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5">
+    <form align="center" method="get" action="/blog">
+        <div class="input-group mb-3">
+            <input type="text" name="filter" th:value="${filter}" class="form-control" placeholder="Найти курс">
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="submit">Найти</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Блог Сайта</h1>
+        </div>
+        <div class="col-md-8">
+            <a sec:authorize="hasAuthority('ADMIN')" class="btn btn-primary float-right" href="/blog/addBlog">Добавить блог</a>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4" th:each="el : ${posts}">
+                <div class="card mb-4 shadow-sm">
+                    <img class="bd-placeholder-img card-img-top" width="100%" height="225"
+                         th:src="${el.link}"
+                         preserveAspectRatio="xMidYMid slice" focusable="false"
+                         role="img" aria-label="Placeholder: Thumbnail">
+                    <rect width="100%" height="100%" fill="#55595c"/>
+                    </img>
+
+                    <div class="card-body">
+                        <p class="card-text" th:text="${el.title}"></p>
+                        <p class="card-text" th:text="${el.getAuthor().getLastname() +' '+ el.getAuthor().getFirstname()}"></p>
+<!--                        <p><b>Просмотры: </b> <span th:text="${el.views}"></span></p>-->
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a class="btn btn-sm btn-outline-info" th:href="'/blog/' + ${el.id} ">Посмотреть</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

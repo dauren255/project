@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <span th:insert="blocks/bootstrap"></span>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<main role="main">
+
+    <section class="jumbotron text-center mt-5 mb-5">
+        <div class="container">
+            <h1>Добро пожаловать</h1>
+            <p class="lead text-muted">Агай онлайн. Новые курсы. Новые возможности.</p>
+            <p>
+                <a href="#" class="btn btn-success my-2">Связаться со мной</a>
+                <a href="#" class="btn btn-info my-2">Оставить данные</a>
+            </p>
+        </div>
+    </section>
+</main>
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>
