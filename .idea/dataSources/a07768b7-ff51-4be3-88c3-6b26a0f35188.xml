@@ -175,11 +175,13 @@
     </table>
     <table id="31" parent="16" name="user_role">
       <ObjectId>155719</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>830</StateNumber>
     </table>
     <table id="32" parent="16" name="usrs">
       <ObjectId>155722</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>1040</StateNumber>
     </table>
